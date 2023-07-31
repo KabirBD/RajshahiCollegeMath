@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Department of Mathematics</title>
+    <!-- Search bar theme change -->
+    <meta name="theme-color" content="green">
+    <meta name="msapplication-navbutton-color" content="green">
+    <meta name="apple-mobile-web-app-status-bar-style" content="green">
+    <!-- For fab icon -->
+    <link rel="shortcut icon" href="./assets/logo/logo512.png" type="image/png" />
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <!-- icofonts -->
+    <link rel="stylesheet" href="./styles/icofont.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'Kalpurush';
+            src: url('Kalpurush.eot');
+            src: url('./assets/Kalpurush.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Kalpurush', Arial, Helvetica, sans-serif;
+        }
+
+        .box-shadow {
+            box-shadow: 0px 3px 10px;
+        }
+
+        .nav-bg {
+            background-image: url("./assets/bg-nav.svg");
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* disable text selection */
+        .prevent-select {
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+        }
+    </style>
+</head>
+
+<body class="prevent-select">
+    <section>
+        <!-- For navigation bar -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top box-shadow p-0 nav-bg">
+            <img src="./assets/logo256.png" class="ml-2" alt="logo" height="35px">
+            <a class="navbar-brand m-0 font-weight-bold mx-3"><span class="text-danger">R</span><span
+                    class="">ajshahi</span>
+                <span class="text-danger">C</span><span class="">ollege</span></a>
+            <button class="navbar-toggler my-1 mr-2" type="button" data-toggle="collapse" data-target="#navBar"
+                aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <!-- for desktop -->
+                <div class="navbar-nav font-3 d-none d-md-flex">
+                    <a class="nav-item nav-link active" href="/"><i class="icofont-home"></i> Home</a>
+                    <a class="nav-item nav-link active" href="/files.html"><i class="icofont-files-stack"></i> Files</a>
+                    <a class="nav-item nav-link active" href="/teachersStuffs.html"><i class="icofont-teacher"></i>
+                        Teachers</a>
+                    <a class="nav-item nav-link active" href="/students.html"><i class="icofont-student-alt"></i>
+                        Students</a>
+                </div>
+                <!-- for mobile -->
+                <div class="d-md-none border-top py-2" style="background-color:rgba(57, 60, 57, 0.452) ;">
+                    <div class="clearfix nav-item d-md-none">
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                href="/" style="min-width:80% ;"><i class="icofont-home"></i> Home</a>
+                        </div>
+                        <div class="mx-auto my-auto p-1 float-right text-center" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                href="/files.html" style="min-width:80% ;"><i class="icofont-files-stack"></i> Files</a>
+                        </div>
+                    </div>
+                    <div class="clearfix nav-item d-md-none">
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                style="min-width:80% ;" href="/students.html"><i class="icofont-student-alt"></i>
+                                Students</a>
+                        </div>
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                style="min-width:80% ;" href="/teachersStuffs.html"><i class="icofont-teacher"></i>
+                                Teachers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div style="margin-top:60px ;"></div>
+    </section>
+    <section>
+        <div class="container text-center">
+            <h1>This Page is Under Development</h1>
+        </div>
+    </section>
+    <!-- sripts for bootstrap -->
+    <script src="./scripts/jquery.slim.min.js"></script>
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+    <script>
+        // Funtion to colapse navbar on outer click
+        $(document).click(function (event) {
+            $('#navBar').collapse('hide');
+        });
+    </script>
+</body>
+
+</html>

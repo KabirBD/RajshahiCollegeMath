@@ -1,0 +1,42 @@
+{
+  "rules": {
+    "fileList":{
+      ".read": true,
+    	".write": true
+    },
+   	"notices":{
+        ".read": true,
+        ".write": true
+    },
+  	 "lastFileSerial":{
+        ".read": true,
+        ".write": true
+    },
+  	 "admins":{
+      "$notAdmin":{
+        ".read": false,
+        ".write": false
+      },
+        "19283764":{
+          ".read":true,
+          ".write":false
+        },
+          "rcaminmath":{
+          ".read":true,
+          ".write":false
+        },
+          "arifbrocr":{
+          ".read":true,
+          ".write":false
+        },
+          "FaisalBroRC":{
+          ".read":true,
+          ".write":false
+        },
+        "shawonrcruhul":{
+          ".read":true,
+          ".write":false
+        }
+    }
+  }
+}

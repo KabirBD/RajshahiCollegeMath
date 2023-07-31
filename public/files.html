@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Department of Mathematics</title>
+
+    <!-- sripts to initiate firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="./scripts/firebaseConfig.js"></script>
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+
+    <!-- icofonts -->
+    <link rel="stylesheet" href="./styles/icofont.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'Kalpurush';
+            src: url('Kalpurush.eot');
+            src: url('./assets/Kalpurush.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Kalpurush', Arial, Helvetica, sans-serif;
+        }
+
+        .halvetica {
+            font-family: Helvetica, sans-serif;
+        }
+
+        .box-shadow {
+            box-shadow: 0px 3px 10px;
+        }
+
+        .nav-bg {
+            background-image: url("./assets/bg-nav.svg");
+            background-position: bottom;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* disable text selection */
+        .prevent-select {
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+        }
+
+        /* enable text selection */
+        .allow-select {
+            -webkit-user-select: text;
+            /* Safari */
+            -ms-user-select: text;
+            /* IE 10 and IE 11 */
+            user-select: text;
+            /* Standard syntax */
+        }
+
+        /* capita letters */
+        .uppercase {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body class="prevent-select">
+    <section>
+        <!-- For navigation bar -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top box-shadow p-0 nav-bg">
+            <img src="./assets/logo256.png" class="ml-2" alt="logo" height="35px">
+            <a class="navbar-brand m-0 font-weight-bold mx-3"><span class="text-danger">R</span><span
+                    class="">ajshahi</span>
+                <span class="text-danger">C</span><span class="">ollege</span></a>
+            <button class="navbar-toggler my-1 mr-2" type="button" data-toggle="collapse" data-target="#navBar"
+                aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBar">
+                <!-- for desktop -->
+                <div class="navbar-nav font-3 d-none d-md-flex">
+                    <a class="nav-item nav-link active" href="/"><i class="icofont-home"></i> Home</a>
+                    <a class="nav-item nav-link active" href="/files.html"><i class="icofont-files-stack"></i> Files</a>
+                    <a class="nav-item nav-link active" href="/teachersStuffs.html"><i class="icofont-teacher"></i>
+                        Teachers</a>
+                    <a class="nav-item nav-link active" href="/students.html"><i class="icofont-student-alt"></i>
+                        Students</a>
+                </div>
+                <!-- for mobile -->
+                <div class="d-md-none border-top py-2" style="background-color:rgba(57, 60, 57, 0.452) ;">
+                    <div class="clearfix nav-item d-md-none">
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                href="/" style="min-width:80% ;"><i class="icofont-home"></i> Home</a>
+                        </div>
+                        <div class="mx-auto my-auto p-1 float-right text-center" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                href="/files.html" style="min-width:80% ;"><i class="icofont-files-stack"></i> Files</a>
+                        </div>
+                    </div>
+                    <div class="clearfix nav-item d-md-none">
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                style="min-width:80% ;" href="/students.html"><i class="icofont-student-alt"></i>
+                                Students</a>
+                        </div>
+                        <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+                            <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                                style="min-width:80% ;" href="/teachersStuffs.html"><i class="icofont-teacher"></i>
+                                Teachers</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div style="margin-top:60px ;"></div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="card-columns" id="fileDom">
+                <!-- DOM where files will be listed -->
+                <!-- file spinner section -->
+                <div class="container text-center my-5">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p>Loading Files..</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <!-- modal to upload file -->
+        <div class="modal fade" id="newUpload" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="newUploadTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header py-2">
+                        <h5 class="modal-title" id="newUploadTitle"><i class="icofont-cloud-upload"></i> Add a New File
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputFile" accept=".jpg, .png, .jpeg, .txt, .doc, .docx, .pdf">
+                                    <label class="custom-file-label" for="inputFile" id="fileName">Choose a file</label>
+                                </div>
+                                <div class="progress mt-1" style="height:7px;" id="progressDiv">
+                                    <div id="uploadProgress" class="progress-bar" role="progressbar" style="width: 0%;"
+                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group">
+                            <label for="noticeBody">File Details</label>
+                            <textarea class="form-control" autocapitalize="on" id="fileDetails" rows="3"
+                                placeholder="Write File Details Here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminToken2">Admin Token</label>
+                            <input type="password" autocomplete="on" class="form-control" id="adminToken2"
+                                placeholder="Type Your Admin Token">
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer py-0">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- sripts for bootstrap -->
+    <script src="./scripts/jquery.slim.min.js"></script>
+    <script src="./scripts/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/dateConfig.js"></script>
+    <script src="./scripts/files.js"></script>
+    <script src="./scripts/uploadFile.js"></script>
+</body>
+
+</html>

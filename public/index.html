@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Department of Mathematics</title>
+  <!-- manifest -->
+  <link rel="manifest" href="./manifest.json">
+  <!-- Search bar theme change -->
+  <meta name="theme-color" content="green">
+  <meta name="msapplication-navbutton-color" content="green">
+  <meta name="apple-mobile-web-app-status-bar-style" content="green">
+
+  <!-- For fab icon -->
+  <link rel="shortcut icon" href="./assets/logo/logo512.png" type="image/png" />
+
+  <!-- icofonts -->
+  <link rel="stylesheet" href="./styles/icofont.min.css">
+
+  <!-- sripts to initiate firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+  <script src="./scripts/firebaseConfig.js"></script>
+
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" href="./styles/bootstrap.min.css">
+
+  <!-- My styles -->
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body class="prevent-select" style="background-color:rgba(245, 253, 246, 0.966) ;">
+  <!-- For Facebook page embeding -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
+    nonce="fc7cnDZm"></script>
+
+  <section>
+    <!-- For navigation bar -->
+    <nav id="navbar" class="navbar navbar-expand-md navbar-dark bg-success fixed-top box-shadow p-0 nav-bg halvetica">
+      <img src="./assets/logo256.png" class="ml-2" alt="logo" height="35px">
+      <a class="navbar-brand m-0 font-weight-bold mx-3 kalpurush"><span class="text-danger">R</span><span
+          class="">ajshahi</span>
+        <span class="text-danger">C</span><span class="">ollege</span></a>
+      <button class="navbar-toggler my-1 mr-2" type="button" data-toggle="collapse" data-target="#navBar"
+        aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navBar">
+        <!-- for desktop -->
+        <div class="navbar-nav font-3 d-none d-md-flex">
+          <a class="nav-item nav-link active" href="/"><i class="icofont-home"></i> Home</a>
+          <a class="nav-item nav-link active" href="files.html"><i class="icofont-files-stack"></i> Files</a>
+          <a class="nav-item nav-link active" data-toggle="modal" style="cursor:pointer ;"
+            data-target="#newNoticeModal"><i class="icofont-bullhorn"></i> Add Notice</a>
+          <a class="nav-item nav-link active" data-toggle="modal" style="cursor:pointer ;" data-target="#newUpload"><i
+              class="icofont-upload-alt"></i> Upload File</a>
+          <a class="nav-item nav-link active" href="teachersStuffs.html"><i class="icofont-teacher"></i> Teachers</a>
+          <a class="nav-item nav-link active" href="students.html"><i class="icofont-student-alt"></i> Students</a>
+        </div>
+        <!-- for mobile -->
+        <div class="d-md-none border-top py-2" style="background-color:rgba(57, 60, 57, 0.452) ;">
+          <div class="clearfix nav-item d-md-none">
+            <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold" href="/"
+                style="min-width:80% ;"><i class="icofont-home"></i> Home</a>
+            </div>
+            <div class="mx-auto my-auto p-1 float-right text-center" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                href="files.html" style="min-width:80% ;"><i class="icofont-files-stack"></i> Files</a>
+            </div>
+          </div>
+          <div class="clearfix nav-item d-md-none">
+            <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                style="min-width:80% ;" href="students.html"><i class="icofont-student-alt"></i> Students</a>
+            </div>
+            <div class="mx-auto my-auto p-1 float-right text-center" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                style="min-width:80% ; cursor:pointer;" data-toggle="modal" data-target="#newUpload"><i
+                  class="icofont-upload-alt"></i> Upload File</a>
+            </div>
+          </div>
+          <div class="clearfix nav-item d-md-none">
+            <div class="  float-left text-center mx-auto my-auto p-1" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                style="min-width:80% ;" href="teachersStuffs.html"><i class="icofont-teacher"></i> Teachers</a>
+            </div>
+            <div class="mx-auto my-auto p-1 float-right text-center" style="width:50% ;">
+              <a class="btn  btn-outline-light py-2 shadow text-light text-decoration-none font-weight-bold"
+                style="min-width:80%; cursor:pointer;" data-toggle="modal" data-target="#newNoticeModal"><i
+                  class="icofont-bullhorn"></i> Add Notice</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div style="margin-top:60px ;"></div>
+  </section>
+
+  <section>
+    <!-- for big header -->
+    <div class="container">
+      <div class="text-center mt-2">
+        <p id="rcHeading" class="mb-0 mt-2 p-0 glow-text halvetica">Rajshahi College</p>
+        <p id="depHeading" class="font-weight-light mt-0 p-0 monospace">Department of Mathematics</p>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="mb-4">
+    <!-- for routine -->
+    <div class="container" id="rutineContainer">
+      <div class="shadow" style="background-color:rgba(245, 250, 246, 0.859) ;">
+        <h5 class="card-header shadow round-top p-1 text-center bg-success text-light halvetica"><i
+            class="icofont-tasks-alt"></i>
+          Routines</h5>
+        <!-- routine tab buttons -->
+        <ul class="nav nav-tabs text-center nav-justified" id="rutineTab" role="tablist" style="margin-top:1px ;">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active p-1 w-100 font-weight-bold" id="todayRutineBtn" data-toggle="pill"
+              data-target="#todayRutine" type="button" role="tab" aria-controls="todayRutine"
+              aria-selected="true">Today</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link p-1 w-100 font-weight-bold" id="tomorrowRutineBtn" data-toggle="pill"
+              data-target="#tomorrowRutine" type="button" role="tab" aria-controls="tomorrowRutine"
+              aria-selected="false">Tomorrow</button>
+          </li>
+        </ul>
+        <div class="tab-content bg-light" id="rutineTabContent">
+          <!-- todays rutine tab view -->
+          <div class="tab-pane fade show active" id="todayRutine" role="tabpanel" aria-labelledby="todayRutineBtn">
+            <div id="rutineDiv" class="overflow-auto p-0">
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class='p-1 text-center'>Period</th>
+                    <th scope="col" class='p-1 text-center'>Subject</th>
+                    <th scope="col" class='p-1 text-center'>Room</th>
+                    <th scope="col" class='p-1 text-center'>Teacher</th>
+                  </tr>
+                </thead>
+                <tbody id="rutineView">
+                </tbody>
+                <tfoot>
+                  <tr class="text-right p-1">
+                    <td colspan="4" class="p-1 px-2"> <span id="dateView"></span></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <!-- tomorrows rutine tab view -->
+          <div class="tab-pane fade" id="tomorrowRutine" role="tabpanel" aria-labelledby="tomorrowRutineBtn">
+            <div class="overflow-auto p-0" id="rutineDivTm">
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr>
+                    <th scope="col" class='p-1 text-center'>Period</th>
+                    <th scope="col" class='p-1 text-center'>Subject</th>
+                    <th scope="col" class='p-1 text-center'>Room</th>
+                    <th scope="col" class='p-1 text-center'>Teacher</th>
+                  </tr>
+                </thead>
+                <tbody id="rutineViewTm">
+                </tbody>
+                <tfoot>
+                  <tr class="text-right p-1">
+                    <td colspan="4" class="p-1 px-2"> <span id="tmDateView"></span></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center mt-2">
+      <a href="./fullRutines.html"
+        class="btn btn-sm btn-outline-secondary font-weight-bold rounded-pill p-0 px-2 halvetica">View
+        Full Week Routine <i class="icofont-arrow-right"></i></a>
+    </div>
+  </section>
+ 
+  <section id="installSection">
+    <div class="container">
+      <div class="jumbotron p-3 shadow">
+        <h1 class="display-5 text-info">Install the App!</h1>
+        <p class="lead">Please install the app to your device to access it fast & easily. You will get all you need just
+          in one click! You can use some features even you are offline! Follow instructions..</p>
+        <ul class="halvetica">
+          <li class="">Open <span class="text-info font-weight-bold">Chrome </span> browser </li>
+          <li class="">Enter this link: <span
+              class="text-info allow-select font-weight-bold">rajshahicollege-math.web.app</span></li>
+          <li class="">Click the <span class="text-info font-weight-bold">Install Button </span> below</li>
+          <li class="">If you can not install in this way, follow this <a href="./installTutorial.html"
+              class="font-weight-bold "> <i class="icofont-ui-video-play"></i> Video tutorial</a></li>
+        </ul>
+        <hr class="my-1">
+        <p class="my-1">Ignore it if you have already installed.</p>
+        <button id="installBtn" class="btn btn-info">Install App</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="noticeSection">
+    <!-- for notices -->
+    <div class="container">
+      <h5 class="card-header round-top shadow p-1 text-center bg-success text-light halvetica"><i
+          class="icofont-newspaper"></i>
+        Notices</h5>
+      <div class="card-body p-0" id="latestNotices">
+        <!-- here latest notices will be showed -->
+        <div class="container text-center py-5 border shadow">
+          <!-- show spinner untill notices are loaded -->
+          <div class="spinner-border text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <p>Loading Notices..</p>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <button type="button" id="oldNoticeButton"
+          class="btn btn-light btn-block border font-weight-bold text-success font-weight-bold mb-3 halvetica"
+          data-toggle="modal" data-target="#oldNoticesModal"><i class="icofont-clock-time"></i> View Old
+          Notices</button>
+      </div>
+    </div>
+
+    <!-- modal to display old notices -->
+    <div class="modal fade" id="oldNoticesModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header py-2">
+            <h5 class="modal-title" id="staticBackdropLabel"><i class="icofont-newspaper"></i> Old Notices</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body p-0" id="oldNotices">
+            <!-- here old notices will be shown -->
+            <div class="alert alert-warning" role="alert">
+              There is no old notice.
+            </div>
+          </div>
+          <div class="modal-footer p-0">
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="fbPageSection">
+    <!-- for facebook page -->
+    <div class="container text-center mb-3">
+      <div class="card shadow pb-2" style="background-color: #f5f6f7;">
+        <h5 class="card-header shadow round-top shadow p-1 text-center bg-success text-light halvetica"><i
+            class="icofont-facebook bg-primary"></i>
+          Facebook Page</h5>
+        <div class="fb-page" style="min-height:170px ;" data-href="https://www.facebook.com/rcmath"
+          data-tabs="timeline" data-width="500" data-height="" data-small-header="true"
+          data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+          <blockquote cite="https://www.facebook.com/rcmath" class="fb-xfbml-parse-ignore"><a
+              href="https://www.facebook.com/rcmath">Department of Mathematics, Rajshahi College.</a></blockquote>
+        </div>
+      </div>
+  </section>
+
+
+  <section>
+    <!-- Modal to add new notice-->
+    <div class="modal fade" id="newNoticeModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-labelledby="newNoticeModaltitile" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-2">
+            <h5 class="modal-title" id="newNoticeModaltitile"><i class="icofont-attachment"></i> Add New Notice</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="noticeTitle">Notice Title</label>
+                <input type="text" autocapitalize="words" autocomplete="off" class="form-control" id="noticeTitle"
+                  placeholder="Type Notice Title Here">
+              </div>
+              <div class="form-group">
+                <label for="noticeBody">Details</label>
+                <textarea class="form-control" autocapitalize="on" id="noticeBody" rows="5"
+                  placeholder="Type Notice Details Here"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="adminToken">Admin Token</label>
+                <input type="password" autocomplete="on" class="form-control" id="adminToken"
+                  placeholder="Type Your Admin Token">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer py-1">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="postNotice()">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal to upload file -->
+    <div class="modal fade" id="newUpload" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-labelledby="newUploadTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header py-2">
+            <h5 class="modal-title" id="newUploadTitle"><i class="icofont-cloud-upload"></i> Add a New File</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputFile"
+                    accept=".jpg, .png, .jpeg, .txt, .doc, .docx, .pdf">
+                  <label class="custom-file-label" for="inputFile" id="fileName">Choose a file</label>
+                </div>
+                <div class="progress mt-1" style="height:7px;" id="progressDiv">
+                  <div id="uploadProgress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </form>
+            <div class="form-group">
+              <label for="noticeBody">File Details</label>
+              <textarea class="form-control" autocapitalize="on" id="fileDetails" rows="3"
+                placeholder="Write File Details Here"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="adminToken2">Admin Token</label>
+              <input type="password" autocomplete="on" class="form-control" id="adminToken2"
+                placeholder="Type Your Admin Token">
+            </div>
+            </form>
+          </div>
+          <div class="modal-footer py-0">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <!-- Menu section -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm my-2">
+          <div class="card shadow" style="width:100%; height: 100%;">
+            <div class="card-body text-center p-0 py-3">
+              <img src="./assets/file-storage.png" alt="Files Logo" style="width:20%;">
+              <p class="card-text menu-card-details lead mb-1 mx-2">All class notes and other documents are available
+                here. You can download any file if you need</p>
+              <a href="./files.html"
+                class="btn btn-outline-success width-50 font-weight-bold rounded-pill halvetica shadow">Go to
+                Files
+                List <i class="icofont-login"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm my-2">
+          <div class="card shadow" style="width:100%; height: 100%;">
+            <div class="card-body text-center p-0 py-3">
+              <img src="./assets/upload.png" alt="Files Logo" style="width:20%;">
+              <p class="card-text menu-card-details lead mb-1 mx-2">You can also upload files related to our academic
+                study. You
+                just need to be an admin!</p>
+              <button type="button"
+                class="btn btn-outline-success width-50 font-weight-bold rounded-pill halvetica shadow"
+                data-toggle="modal" data-target="#newUpload">
+                Upload A File <i class="icofont-upload-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm my-2">
+          <div class="card shadow" style="width:100%; height: 100%;">
+            <div class="card-body text-center p-0 py-3">
+              <img src="./assets/noticeboard.png" alt="Files Logo" style="width:20%;">
+              <p class="card-text menu-card-details lead mb-1 mx-2">You can also add notices related to our academic
+                study. You
+                just need to be an admin!</p>
+              <button type="button"
+                class="btn btn-outline-success width-50 font-weight-bold rounded-pill halvetica shadow"
+                data-toggle="modal" data-target="#newNoticeModal">Add A Notice <i class="icofont-edit"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm my-2">
+          <div class="card shadow" style="width:100%; height: 100%;">
+            <div class="card-body text-center p-0 py-3">
+              <img src="./assets/teacher.png" alt="Files Logo" style="width:20%;">
+              <p class="card-text menu-card-details lead mb-1 mx-2">All teachers and office stuffs of our department are
+                listed here with their contacts</p>
+              <a href="./teachersStuffs.html"
+                class="btn btn-outline-success width-50 font-weight-bold rounded-pill halvetica shadow">View Teachers'
+                List <i class="icofont-teacher"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm my-2">
+          <div class="card shadow" style="width:100%; height: 100%;">
+            <div class="card-body text-center p-0 py-3">
+              <img src="./assets/students.png" alt="Files Logo" style="width:20%;">
+              <p class="card-text menu-card-details lead mb-1 mx-2">All the students of first year of our department
+                are listed here with their roll and other informations</p>
+              <a href="./students.html"
+                class="btn btn-outline-success width-50 font-weight-bold rounded-pill halvetica shadow">View
+                Students' List <i class="icofont-group-students"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <!-- quotes section -->
+    <div class="container my-4">
+      <div class="card shadow">
+        <div class="card-header bg-success text-light font-weight-bold p-1 pl-2 halvetica">
+          <i class="icofont-quote-left"></i> A Quote for You
+        </div>
+        <div class="card-body p-0 px-2">
+          <blockquote class="blockquote mb-0 allow-select">
+            <p id="quote" class="mb-0">A life spent making mistakes is not only more honourable, but more useful than a
+              life spent
+              doing nothing.</p>
+            <footer class="blockquote-footer mb-2"><cite title="Source Title"><span id="quoteBy">George Bernard
+                  Shaw</span></cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="" id="thank">
+    <div class="container">
+      <div class="alert alert-success lead" role="alert">
+        <cite>Thank you for installing this app. Keep using.</cite>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-white halvetica text-center text-lg-start" style="background-color:rgba(11, 18, 10, 0.859) ;">
+    <!-- Grid container -->
+    <div class="container pt-2">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-12 col-md-12 ">
+          <h5 class="text-uppercase text-warning m-0">Why it's Made</h5>
+          <p>
+            This web app is made with a view to helping the students of the Department of Mathematics. Students can view
+            correct
+            routine, stay informed the latest notices, collect class-notes, realted documents and so on.
+          </p>
+
+        </div>
+        <!--Grid column-->
+        <div class="col-12 col-md-6">
+          <h5 class="text-uppercase text-warning m-0">Unofficial Site!</h5>
+          <p>
+            This is not an official website of the Department of Mathematics of Rajshahi College. <a
+              href="https://rc.gov.bd/mathematics/" target="_blank"
+              class="text-info font-weight-bold text-decoration-none"> Go to official website</a>
+          </p>
+        </div>
+        <!--Grid column-->
+        <div class="col-12 col-md-6">
+          <h5 class="text-uppercase text-warning m-0">Be an Admin</h5>
+          <p>
+            I know you have a helping nature. If you want to help others by uploading class notes or posting latest
+            notices, you can be an admin easily. Just <a href="https://kabirbd.github.io/#!/about" target="_blank"
+              class="text-info font-weight-bold text-decoration-none">contact here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+      <p class="m-0 p-0">
+        © 2022 <a class="text-whit" href="https://rajshahicollege-math.web.app/">Dept. of Math Web App</a> All rights
+        reserved
+      </p>
+    </div>
+  </footer>
+
+  <!-- for fab -->
+  <div class="fabs" onclick="toggleBtn()">
+    <div class="action">
+      <i class="icofont-plus" id="add"></i>
+      <i class="icofont-collapse font-weight-bold" id="remove" style="display: none;  font-size: 2rem;"></i>
+    </div>
+    <div class="btns-fab">
+      <a class="btn-fab font-stroke" data-toggle="modal" data-target="#newNoticeModal"><i class="icofont-edit"
+          style="color:rgb(8, 163, 0);"></i></a>
+      <a class="btn-fab font-stroke" data-toggle="modal" data-target="#newUpload"><i class="icofont-upload-alt"
+          style="color:rgb(8, 163, 0);"></i></a>
+    </div>
+  </div>
+
+  <!-- sripts for bootstrap -->
+  <script src="./scripts/jquery.slim.min.js"></script>
+  <script src="./scripts/bootstrap.bundle.min.js"></script>
+
+  <!-- fitty -->
+  <script src="./scripts/fitty.min.js"></script>
+
+  <!-- My scripts -->
+  <script src="./scripts/dateConfig.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./serviceWorker.js"></script>
+  <script src="./scripts/sehriIftar.js"></script>
+  <script src="./scripts/firebaseNotice.js"></script>
+  <script src="./scripts/newNotice.js"></script>
+  <script src="./scripts/uploadFile.js"></script>
+</body>
+
+</html>

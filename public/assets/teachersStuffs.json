@@ -1,0 +1,98 @@
+{
+    "teachers": [
+        {
+            "name": "Md. Kofil Ahmed",
+            "id": "4361",
+            "title": "Professor & Department Head, Mathematics",
+            "phone": "01716386574"
+        },
+        {
+            "name": "Md. Nurul Islam",
+            "id": "6738",
+            "title": "Professor, Mathematics",
+            "phone": "01721755339"
+        },
+        {
+            "name": "D. Ayesha Nazneen",
+            "id": "012609",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01716624202"
+        },
+        {
+            "name": "D. Md. Abdul Aziz",
+            "id": "012509",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01716408598"
+        },
+        {
+            "name": "Md. Yaqub Ali",
+            "id": "016614",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01711142679"
+        },
+        {
+            "name": "Md. Ashaduzzaman",
+            "id": "014183",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01718270081"
+        },
+        {
+            "name": "Md. Mizanur Rahman",
+            "id": "014058",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01715572384"
+        },
+        {
+            "name": "Md. Sarwar Jahan",
+            "id": "013458",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01725016097"
+        },
+        {
+            "name": "Saika Horkil",
+            "id": "014881",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01717172302"
+        },
+        {
+            "name": "Nadira Nazneen",
+            "id": "015968",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01724939888"
+        },
+        {
+            "name": "Mst. Lailatul Kadri",
+            "id": "018026",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01735675402"
+        },
+        {
+            "name": "Mst. Mafruha Mustari",
+            "id": "018066",
+            "title": "Assistant Professor, Mathematics",
+            "phone": "01725905474"
+        }
+    ],
+    "stuffs": [
+        {
+            "name": "Md. Rakibul Azad",
+            "title": "Office Assistant (Computer Operator)",
+            "phone": "01911031911"
+        },
+        {
+            "name": "Emi Aktar",
+            "title": "Seminar Library Assistant",
+            "phone": "01773860291"
+        },
+        {
+            "name": "Md. Shakil Ahmed",
+            "title": "Office Assistant Stuff",
+            "phone": "01624603978"
+        },
+        {
+            "name": "Md. Salman Farhan",
+            "title": "Office Assistant",
+            "phone": "01795860686"
+        }
+    ]
+}

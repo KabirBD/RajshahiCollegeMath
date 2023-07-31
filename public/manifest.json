@@ -1,0 +1,37 @@
+{
+    "name": "Department of Mathematics",
+    "short_name": "Dept. of Math",
+    "description": "A web application of the department of Mathematics of Rajshahi College",
+    "icons": [{
+      "src": "./assets/logo/logo128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "./assets/logo/logo144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "./assets/logo/logo152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "./assets/logo/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "./assets/logo/logo256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "./assets/logo/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+    "lang": "en-US",
+    "version": "10.0",
+    "scope": "./",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "white",
+    "theme_color": "green"
+  }
